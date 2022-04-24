@@ -47,6 +47,11 @@ public class Fatura {
 	public void setPagamentoEfetuado(boolean pagamentoEfetuado) {
 		this.pagamentoEfetuado = pagamentoEfetuado;
 	}
+	
+	public void verificaDivida() {
+		if(getValorFatura() <= 0)
+			this.setPagamentoEfetuado(true);
+	}
 
 
 }

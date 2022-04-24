@@ -5,13 +5,14 @@ import java.util.ArrayList;
 public class ProcessadorDeBoletos {
 	
 		public boolean realizaPagamento(ArrayList<Boleto> boletosFatura, Fatura fatura) {
-			double valorPago = 0.0;
 			for(int i = 0; i < boletosFatura.size(); i++) {
-				valorPago += boletosFatura.get(i).getValorPago();
+				double valorBoleto = boletosFatura.get(i).getValorPago();
+				fatura.setValorFatura(fatura.getValorFatura() - valorBoleto);
 			}
 			
-			double valorFatura = fatura.getValorFatura();
-			if(valorPago >= valorFatura) {
+			fatura.verificaDivida();
+			
+			if(fatura.pagamentoEfetuado == true) {
 				System.out.println("A fatura está paga");
 				return true;
 			}
