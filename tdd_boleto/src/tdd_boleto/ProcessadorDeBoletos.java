@@ -11,9 +11,11 @@ public class ProcessadorDeBoletos {
 			}
 			
 			double valorFatura = fatura.getValorFatura();
-			if(valorPago == valorFatura) {
+			if(valorPago >= valorFatura) {
+				System.out.println("A fatura está paga");
 				return true;
 			}
+			System.out.println("A fatura não está paga");
 			return false;
 		}
 }
